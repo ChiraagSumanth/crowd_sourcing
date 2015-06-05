@@ -35,7 +35,7 @@ class ClientController extends Controller {
 		$client->gender = \Request::input('gender', '');
 		$client->education = \Request::input('education', '');
 		$client->employment = \Request::input('employment', '');
-		$client->mt = \Request::input('mturk', '');
+		$mt = \Request::input('mturk', '');
 		
 		if($client->mt == "false")
 		{
@@ -50,7 +50,7 @@ class ClientController extends Controller {
 		else
 		{
 			try{
-				$client->token = $client->mt
+				$client->token = $mt
 				$client->experimental_condition = ((rand(0,1) == 0)? 'social' : 'control');
 				
 				if ($client->experimental_condition == 'social')
